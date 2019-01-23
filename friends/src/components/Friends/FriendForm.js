@@ -6,7 +6,7 @@ class FriendForm extends React.Component {
         this.state = {
             friend: {
                 name: "",
-                age: 0, //state currently updates this as a string
+                age: "", //state currently updates this as a string
                 email: ""
             }
         }
@@ -37,15 +37,22 @@ class FriendForm extends React.Component {
     addFriendToList = e => {
         e.preventDefault();
         this.props.addFriendToList(this.state.friend);
+        this.setState({
+            friend: {
+                name: "",
+                age: "",
+                email: ""
+            }
+        })
         
     }
     render() {
         return (
             <div>
                 <form onSubmit={this.addFriendToList}>
-                    <input type="text" name="name" placeholder="Name" onChange={this.handleChange}></input>
-                    <input type="number" name="age" placeholder="Age" onChange={this.handleChange}></input>
-                    <input type="email" name="email" placeholder="Email" onChange={this.handleChange}></input>
+                    <input type="text" value={this.state.friend.name} name="name" placeholder="Name" onChange={this.handleChange}></input>
+                    <input type="number" value={this.state.friend.age} name="age" placeholder="Age" onChange={this.handleChange}></input>
+                    <input type="email" value={this.state.friend.email} name="email" placeholder="Email" onChange={this.handleChange}></input>
                     <button>Add friend</button>
                 </form>
             </div>
