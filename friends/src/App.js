@@ -32,6 +32,13 @@ class App extends Component {
       .then(res => this.setState({ friends: res.data }))
       .catch(err => this.setState({ error: "There has been an error." }));
   }
+
+  addFriendToList = friend => {
+    axios.post("http://localhost:5000/friends", friend)
+    .then(res => console.log(res))
+    .catch(err => console.log(err))
+  }
+
   render() {
     console.log(this.state.friends);
     return (
@@ -54,7 +61,7 @@ class App extends Component {
           <div>
             <Route
               path="/addfriend"
-              render={props => <FriendForm {...props} />}
+              render={props => <FriendForm {...props} addFriendToList={this.addFriendToList} />}
             />
           </div>
         </DataWrapperDiv>
