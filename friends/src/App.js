@@ -3,15 +3,22 @@ import axios from "axios";
 import { Route } from "react-router-dom";
 import styled from "styled-components";
 
-import FriendsList from "./components/FriendsList";
-import FriendForm from "./components/FriendForm";
+import FriendsList from "./components/Friends/FriendsList";
+import FriendForm from "./components/Friends/FriendForm";
+import Navigation from "./components/Navigation/Navigation";
 
 import "./App.css";
 
 const AppWrapperDiv = styled.div`
   display: flex;
+  flex-direction: column;
   border: 1px solid red;
 `;
+
+const DataWrapperDiv = styled.div`
+  display: flex;
+`;
+
 
 class App extends Component {
   state = {
@@ -30,21 +37,27 @@ class App extends Component {
     return (
       <AppWrapperDiv>
         {this.state.error && `${this.state.error}`}
+        <div>
+          <Navigation />
+        </div>
+
         {/* <FriendsList friends={this.state.friends} /> */}
-        <div>
-          <Route
-            path="/"
-            render={props => (
-              <FriendsList {...props} friends={this.state.friends} />
-            )}
-          />
-        </div>
-        <div>
-          <Route
-            path="/addfriend"
-            render={props => <FriendForm {...props} />}
-          />
-        </div>
+        <DataWrapperDiv>
+          <div>
+            <Route
+              path="/"
+              render={props => (
+                <FriendsList {...props} friends={this.state.friends} />
+              )}
+            />
+          </div>
+          <div>
+            <Route
+              path="/addfriend"
+              render={props => <FriendForm {...props} />}
+            />
+          </div>
+        </DataWrapperDiv>
       </AppWrapperDiv>
     );
   }
