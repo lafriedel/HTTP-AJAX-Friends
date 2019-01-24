@@ -82,7 +82,22 @@ class App extends Component {
   }
 
   updateFriendInfo = () => {
-    axios.put()
+    axios.put(`http://localhost:5000/friends/${this.state.friend.id}`, this.state.friend)
+    .then(res => {
+      console.log("addFriendToList", res);
+      this.setState({
+        friends: res.data,
+        friend: {
+          name: "",
+          age: "",
+          email: ""
+        },
+        isUpdating: false
+      });
+      this.props.history.push("/");
+    })
+    .catch(err => console.log(err))
+
   }
 
   // updateStateWithNewData() {
