@@ -7,12 +7,12 @@ import FriendsList from "./components/Friends/FriendsList";
 import FriendForm from "./components/Friends/FriendForm";
 import Navigation from "./components/Navigation/Navigation";
 
-import "./App.css";
-
 const AppWrapperDiv = styled.div`
   display: flex;
   flex-direction: column;
   border: 1px solid red;
+  max-width: 1200px;
+  margin: 0 auto;
 `;
 
 const DataWrapperDiv = styled.div`
