@@ -8,6 +8,7 @@ const FriendDetails = props => {
             {props.friend.age}
             {props.friend.email}
             <button onClick={(e) => props.populateForm(e, props.friend.id)}>Update Info</button>
+            <button onClick={(e) =>props.deleteFriend(e, props.friend.id)}>Delete Friend</button>
         </div>
     )
 }
