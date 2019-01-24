@@ -6,7 +6,7 @@ class FriendForm extends React.Component {
         this.state = {
             friend: {
                 name: "",
-                age: "", //state currently updates this as a string
+                age: "", 
                 email: ""
             }
         }
@@ -14,7 +14,6 @@ class FriendForm extends React.Component {
 
     handleChange = e => {
         if (e.target.name === "age") {
-            console.log("got it");
             let numberValue = Number(e.target.value);
 
             this.setState({
@@ -43,10 +42,11 @@ class FriendForm extends React.Component {
                 age: "",
                 email: ""
             }
-        })
+        }, console.log("addFriendToList in FriendForm", this.state))
         
     }
     render() {
+        console.log("render in FriendForm", this.state)
         return (
             <div>
                 <form onSubmit={this.addFriendToList}>

@@ -29,18 +29,43 @@ class App extends Component {
   componentDidMount() {
     axios
       .get("http://localhost:5000/friends")
-      .then(res => this.setState({ friends: res.data }))
-      .catch(err => this.setState({ error: "There has been an error." }));
+      .then(res => {
+        this.setState({
+           friends: res.data 
+        }, console.log("CDM", res))
+    })
+      .catch(() => this.setState({ error: "There has been an error." }));
   }
 
   addFriendToList = friend => {
     axios.post("http://localhost:5000/friends", friend)
-    .then(res => console.log(res))
+    .then(res => {
+      console.log("addFriendToList in App", res);
+      this.updateStateWithNewData();
+    })
     .catch(err => console.log(err))
   }
 
+  updateStateWithNewData() {
+    axios.get("http://localhost:5000/friends")
+      .then(res => {
+        this.setState({
+          friends: res.data,
+          error: ""
+          },
+          console.log("updateStateWithNewData", res)
+        )
+      })
+      .catch(err => {
+        console.log(err);
+        this.setState({
+          error: "There has been an error."
+        })
+      });
+  }
+
   render() {
-    console.log(this.state.friends);
+    console.log("render in App", this.state);
     return (
       <AppWrapperDiv>
         {this.state.error && `${this.state.error}`}
@@ -48,7 +73,6 @@ class App extends Component {
           <Navigation />
         </div>
 
-        {/* <FriendsList friends={this.state.friends} /> */}
         <DataWrapperDiv>
           <div>
             <Route
