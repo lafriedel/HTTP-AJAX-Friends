@@ -1,6 +1,14 @@
 import React from 'react';
 
 const FriendForm = props => {
+    function conditionalSubmit(e) {
+        e.preventDefault();
+        if (props.isUpdating) {
+            props.updateFriendInfo();
+        } else {
+            props.addFriendToList();
+        }
+    }
     // constructor(props) {
     //     super(props);
     //     this.state = {
@@ -49,11 +57,13 @@ const FriendForm = props => {
         return (
             <div>
                 {/* <form onSubmit={this.addFriendToList}> */}
-                <form onSubmit={e => props.addFriendToList(e)}>
+                <form onSubmit={conditionalSubmit}>
                     <input type="text" value={props.friend.name} name="name" placeholder="Name" onChange={props.handleChange}></input>
                     <input type="number" value={props.friend.age} name="age" placeholder="Age" onChange={props.handleChange}></input>
                     <input type="email" value={props.friend.email} name="email" placeholder="Email" onChange={props.handleChange}></input>
-                    <button>Add friend</button>
+                    <button>
+                        {props.isUpdating ? "Update Info" : "Add Friend"}
+                    </button>
                 </form>
             </div>
         );
