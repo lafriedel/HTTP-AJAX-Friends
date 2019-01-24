@@ -49,11 +49,12 @@ class FriendForm extends React.Component {
         console.log("render in FriendForm", this.state)
         return (
             <div>
-                <form onSubmit={this.addFriendToList}>
+                {/* <form onSubmit={this.addFriendToList}> */}
+                <form>
                     <input type="text" value={this.state.friend.name} name="name" placeholder="Name" onChange={this.handleChange}></input>
                     <input type="number" value={this.state.friend.age} name="age" placeholder="Age" onChange={this.handleChange}></input>
                     <input type="email" value={this.state.friend.email} name="email" placeholder="Email" onChange={this.handleChange}></input>
-                    <button>Add friend</button>
+                    <button onClick={this.addFriendToList}>Add friend</button>
                 </form>
             </div>
         );
