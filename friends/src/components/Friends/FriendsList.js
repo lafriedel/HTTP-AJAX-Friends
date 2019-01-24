@@ -12,7 +12,7 @@ const FriendsList = props => {
           <Link to={`/${friend.id}`}>
             <Friend friend={friend} key={friend.id} />
           </Link>
-          <Route path={`/${friend.id}`} render={props => <FriendDetails {...props} friend={friend} key={friend.id} />} />
+          <Route path={`/${friend.id}`} render={properties => <FriendDetails {...properties} populateForm={props.populateForm} friend={friend} key={friend.id} />} />
         </React.Fragment>
       ))}
     </div>
