@@ -5,6 +5,8 @@ import styled from 'styled-components';
 const NavWrapper = styled.div`
 padding: 20px 10px;
 display: flex;
+border-bottom: 3px solid black;
+margin-bottom: 20px;
 
 a {
     font-size: 2.4rem;

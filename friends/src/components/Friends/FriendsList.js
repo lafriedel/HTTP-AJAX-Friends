@@ -6,7 +6,8 @@ import Friend from "./Friend";
 import FriendDetails from "./FriendDetails";
 
 const FriendsListDiv = styled.div`
-border: 1px solid purple;
+border-right: 3px solid black;
+padding-right: 30px;
 min-width: 700px;
 `;
 

@@ -18,6 +18,10 @@ font-size: 1.6rem;
 margin-bottom: 10px;
 `;
 
+const FormButton = styled.button`
+margin-top: 15px;
+`;
+
 const FriendForm = props => {
     function conditionalSubmit(e) {
         e.preventDefault();
@@ -79,9 +83,9 @@ const FriendForm = props => {
                     <FormInput type="text" value={props.friend.name} name="name" placeholder="Name" onChange={props.handleChange}></FormInput>
                     <FormInput type="number" value={props.friend.age} name="age" placeholder="Age" onChange={props.handleChange}></FormInput>
                     <FormInput type="email" value={props.friend.email} name="email" placeholder="Email" onChange={props.handleChange}></FormInput>
-                    <button>
+                    <FormButton>
                         {props.isUpdating ? "Update Info" : "Add Friend"}
-                    </button>
+                    </FormButton>
                 </Form>
             </FormWrapper>
         );
