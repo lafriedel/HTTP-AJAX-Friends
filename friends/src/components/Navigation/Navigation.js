@@ -12,14 +12,19 @@ a {
     font-size: 2.4rem;
     text-decoration: overline;
     font-weight: 700;
+
+    &:hover {
+        text-decoration: underline;
+    }
 }
 `;
 
 
-const Navigation = props => {
+const Navigation = () => {
+
     return (
         <NavWrapper>
-            <NavLink to="/addfriend">Add Friend</NavLink>
+            <NavLink to="/form">Add Friend</NavLink>
         </NavWrapper>
     )
 }

@@ -22,6 +22,7 @@ margin-bottom: 10px;
 `;
 
 const FriendsList = props => {
+ 
   console.log("FriendsList props", props);
   return (
     <FriendsListDiv>
